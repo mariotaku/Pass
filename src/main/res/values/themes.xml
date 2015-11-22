@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Pass" parent="android:Theme.Material.Light.DarkActionBar">
+    </style>
+
+    <style name="Theme.Pass.Dialog" parent="@android:style/Theme.Material.Light.Dialog"/>
+
+    <style name="Theme.Pass.Dialog.NoTitle" parent="@style/Theme.Pass.Dialog">
+    </style>
+
+</resources>

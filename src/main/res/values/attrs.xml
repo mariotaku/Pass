@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasswordContainer">
+        <attr name="layout_passwordController" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="RememberMasterPasswordContainer">
+        <attr name="layout_pageController" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="NumberPickerPreferences">
+        <attr name="min" format="integer"/>
+        <attr name="max" format="integer"/>
+    </declare-styleable>
+</resources>

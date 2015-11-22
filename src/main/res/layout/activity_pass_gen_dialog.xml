@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/element_spacing_large"
+    tools:context=".activity.PassGenDialogActivity">
+
+    <LinearLayout
+        android:id="@+id/input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:visibility="gone">
+
+        <Spinner
+            android:id="@+id/domain_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/element_spacing_normal"
+            android:visibility="gone"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/domain_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/element_spacing_normal"
+            android:completionThreshold="1"
+            android:hint="@string/domain"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:visibility="visible"/>
+
+        <org.mariotaku.pass.view.PasswordContainer
+            android:id="@+id/password_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:filterTouchesWhenObscured="true"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/method_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/element_spacing_normal"
+            android:paddingEnd="@dimen/element_spacing_xlarge"
+            android:paddingStart="@dimen/element_spacing_xlarge"
+            android:paddingTop="@dimen/element_spacing_normal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_fp_40px"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/password_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_pw_40px"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/password_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/element_spacing_normal"
+            android:text="@string/input_password_or_fingerprint_hint"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/result_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/button_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/back_to_input"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:clickable="true"
+                android:contentDescription="@string/back"
+                android:minHeight="@dimen/element_size_base"
+                android:minWidth="@dimen/element_size_base"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_back"
+                android:tint="?android:colorForeground"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/close"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:clickable="true"
+                android:contentDescription="@string/close"
+                android:minHeight="@dimen/element_size_base"
+                android:minWidth="@dimen/element_size_base"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_clear"
+                android:tint="?android:colorForeground"/>
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/generated_passwords_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_bar"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <TextView
+                android:id="@+id/generated_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:layout_row="0"
+                android:background="@null"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="?android:textColorPrimary"
+                android:textIsSelectable="true"
+                android:typeface="monospace"
+                tools:text="Password123456"/>
+
+            <TextView
+                android:id="@+id/generated_pin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:layout_row="1"
+                android:background="@null"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="?android:textColorPrimary"
+                android:textIsSelectable="true"
+                android:typeface="monospace"
+                tools:text="123456"/>
+
+
+            <ImageButton
+                android:id="@+id/copy_password"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:clickable="true"
+                android:contentDescription="@string/copy_password"
+                android:minHeight="@dimen/element_size_base"
+                android:minWidth="@dimen/element_size_base"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_copy"
+                android:tint="?android:colorForeground"/>
+
+            <ImageButton
+                android:id="@+id/copy_pin"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:clickable="true"
+                android:contentDescription="@string/copy_pin"
+                android:minHeight="@dimen/element_size_base"
+                android:minWidth="@dimen/element_size_base"
+                android:padding="@dimen/element_spacing_normal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_copy"
+                android:tint="?android:colorForeground"/>
+        </GridLayout>
+
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/remember_master_password">
+        <Preference
+            android:fragment="org.mariotaku.pass.fragment.RememberMasterPasswordFingerprintFragment"
+            android:title="@string/fingerprint"/>
+        <Preference
+            android:fragment="org.mariotaku.pass.fragment.RememberMasterPasswordPatternFragment"
+            android:title="@string/pattern_lock"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pro_features">
+        <Preference
+            android:fragment="org.mariotaku.pass.fragment.NfcTagsListFragment"
+            android:title="@string/nfc_tags"/>
+        <Preference
+            android:fragment="org.mariotaku.pass.fragment.AppWindowsListFragment"
+            android:title="@string/auto_fill_passwords"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/enhanced_security">
+        <EditTextPreference
+            android:key="password_salt"
+            android:password="true"
+            android:title="@string/set_salt"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="clear_copied_password_automatically"
+            android:title="@string/clear_copied_password_automatically"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/advanced">
+        <ListPreference
+            android:defaultValue="sgp_md5"
+            android:entries="@array/entries_password_generator_type"
+            android:entryValues="@array/values_password_generator_type"
+            android:key="password_generator_type"
+            android:title="@string/password_generator_type"/>
+        <org.mariotaku.pass.preference.NumberPickerPreference
+            android:defaultValue="10"
+            android:key="password_length"
+            android:title="@string/password_length"
+            app:max="24"
+            app:min="4"/>
+        <org.mariotaku.pass.preference.NumberPickerPreference
+            android:defaultValue="4"
+            android:key="pin_length"
+            android:title="@string/pin_length"
+            app:max="8"
+            app:min="3"/>
+        <ListPreference
+            android:defaultValue="15000"
+            android:dependency="clear_copied_password_automatically"
+            android:entries="@array/entries_copied_password_validity"
+            android:entryValues="@array/values_copied_password_validity"
+            android:key="copied_password_validity"
+            android:title="@string/copied_password_validity"/>
+    </PreferenceCategory>
+</PreferenceScreen>

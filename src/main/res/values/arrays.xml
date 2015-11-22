@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_password_generator_type">
+        <item>@string/sgp_md5_name</item>
+        <item>@string/sgp_sha512_name</item>
+        <item>@string/pw_composer_name</item>
+    </string-array>
+    <string-array name="values_password_generator_type">
+        <item>sgp_md5</item>
+        <item>sgp_sha512</item>
+        <item>pw_composer</item>
+    </string-array>
+    <string-array name="values_copied_password_validity">
+        <item>10000</item>
+        <item>15000</item>
+        <item>30000</item>
+        <item>60000</item>
+    </string-array>
+    <string-array name="entries_copied_password_validity">
+        <item>10s</item>
+        <item>15s</item>
+        <item>30s</item>
+        <item>1min</item>
+    </string-array>
+</resources>

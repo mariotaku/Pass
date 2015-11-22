@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="element_spacing_normal">8dp</dimen>
+    <dimen name="element_spacing_xlarge">24dp</dimen>
+    <dimen name="element_spacing_large">16dp</dimen>
+    <dimen name="element_size_base">48dp</dimen>
+</resources>
