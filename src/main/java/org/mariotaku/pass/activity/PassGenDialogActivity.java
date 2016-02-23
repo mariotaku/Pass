@@ -28,6 +28,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -102,6 +103,9 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
         final Window window = getWindow();
         boolean customTitleSupported;
         final Intent intent = getIntent();
+        if (!BuildConfig.DEBUG) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
         if (Intent.ACTION_MAIN.equals(intent.getAction())) {
             customTitleSupported = window.requestFeature(Window.FEATURE_CUSTOM_TITLE);
         } else {
