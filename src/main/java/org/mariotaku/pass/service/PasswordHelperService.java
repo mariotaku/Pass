@@ -170,6 +170,7 @@ public class PasswordHelperService extends AccessibilityService implements Const
         findEditTextValues(getRootInActiveWindow(), source, editTextValues);
         CharSequence desiredUri = null;
         for (final CharSequence value : editTextValues) {
+            if (TextUtils.isEmpty(value)) continue;
             if (Patterns.WEB_URL.matcher(value).matches()) {
                 desiredUri = value;
                 break;

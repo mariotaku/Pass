@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Patterns;
 
@@ -39,8 +40,10 @@ public class Utils {
         return links;
     }
 
+    @NonNull
     public static List<String> getHosts(final Context context, final Uri uri, int level) {
         final String host = uri.getHost();
+        if (host == null) return Collections.emptyList();
         if (isValidIPAddress(host)) return Collections.singletonList(host);
         if (isMultiLevelTLD(context, host)) {
             level = level + 1;
@@ -60,7 +63,7 @@ public class Utils {
         return hosts;
     }
 
-    private static boolean isMultiLevelTLD(final Context context, final String host) {
+    private static boolean isMultiLevelTLD(final Context context, @NonNull final String host) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(context.getResources()
                 .openRawResource(R.raw.two_level_tlds), Charset.defaultCharset()))) {
             for (String s; (s = br.readLine()) != null; ) {

@@ -28,6 +28,7 @@ public class ClipboardRestoreService extends IntentService implements Constants 
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        if (intent == null) return;
         final ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         final NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         final SharedPreferences pref = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
