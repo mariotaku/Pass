@@ -22,8 +22,15 @@ android {
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "0.9"
     }
+
+    sourceSets {
+        main {
+            res.srcDirs += project.files("src/$name/res-localized")
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
