@@ -16,6 +16,7 @@ import org.mariotaku.pass.view.RememberMasterPasswordContainer.PageController;
  */
 public class RememberPasswordInputController extends PageController {
     private EditText mEditPassword;
+    private EditText mPasswordConfirm;
 
     public RememberPasswordInputController(final RememberMasterPasswordContainer container,
                                            final Context context, final AttributeSet attributeSet) {
@@ -26,6 +27,7 @@ public class RememberPasswordInputController extends PageController {
     protected void onAttach(final View view) {
         super.onAttach(view);
         mEditPassword = (EditText) view.findViewById(R.id.edit_password);
+        mPasswordConfirm = (EditText) view.findViewById(R.id.password_confirm);
     }
 
     @Override
@@ -50,6 +52,11 @@ public class RememberPasswordInputController extends PageController {
     protected boolean onPageNextExit() {
         if (TextUtils.isEmpty(mEditPassword.getText())) {
             mEditPassword.setError(getContext().getString(R.string.empty_password));
+            return false;
+        }
+        if (!TextUtils.equals(mPasswordConfirm.getText(), mEditPassword.getText())) {
+            mPasswordConfirm.setSelection(0, mPasswordConfirm.length());
+            mPasswordConfirm.setError(getContext().getString(R.string.password_not_match));
             return false;
         }
         hideIME();
