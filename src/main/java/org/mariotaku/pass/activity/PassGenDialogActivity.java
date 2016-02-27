@@ -342,7 +342,16 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
                 mResultContainer.setVisibility(View.GONE);
                 mPasswordView.setText(null);
                 mPinView.setText(null);
-                finishLayout();
+                mCanUseFingerprint = mFingerprintHelper.hasPermission() && mFingerprintHelper.isHardwareDetected()
+                        && mFingerprintHelper.hasEnrolledFingerprints() && hasFingerprintData();
+                if (mCanUseFingerprint) {
+                    mMethodSelect.setVisibility(View.VISIBLE);
+                    setPasswordHint(getString(R.string.input_password_or_fingerprint_hint));
+                    startFingerprintAuthentication();
+                } else {
+                    mMethodSelect.setVisibility(View.GONE);
+                    setPasswordHint(getString(R.string.input_password_hint));
+                }
                 break;
             }
             case R.id.close: {
