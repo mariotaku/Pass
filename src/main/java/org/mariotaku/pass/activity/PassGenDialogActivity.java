@@ -96,6 +96,7 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
     private boolean mCanUseFingerprint;
     private CancellationSignal mCancelFingerprint;
     private ArrayAdapter<String> mDomainSelectorAdapter;
+    private View mBackToInput, mClose;
 
 
     @Override
@@ -130,6 +131,8 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
         mCopyPassword.setOnClickListener(this);
         mCopyPIN.setOnClickListener(this);
 
+        mBackToInput.setOnClickListener(this);
+        mClose.setOnClickListener(this);
 
         mDomainSelectorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         mDomainSelectorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -294,10 +297,12 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
         mMethodSelect = findViewById(R.id.method_select);
         mPasswordToggle = (ImageView) findViewById(R.id.password_toggle);
         mPasswordContainer = ((PasswordContainer) findViewById(R.id.password_container));
-        mPasswordView = (TextView) findViewById(R.id.generated_password);
-        mPinView = (TextView) findViewById(R.id.generated_pin);
+        mPasswordView = (TextView) findViewById(R.id.generated_password_text);
+        mPinView = (TextView) findViewById(R.id.generated_pin_text);
         mCopyPassword = findViewById(R.id.copy_password);
         mCopyPIN = findViewById(R.id.copy_pin);
+        mBackToInput = findViewById(R.id.back_to_input);
+        mClose = findViewById(R.id.close);
         mPasswordHint = (TextView) findViewById(R.id.password_hint);
     }
 
@@ -330,6 +335,18 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
                 ClipboardRestoreService.startCopy(this, clipData);
                 finishAndRemoveTask();
                 send(text);
+                break;
+            }
+            case R.id.back_to_input: {
+                mInputContainer.setVisibility(View.VISIBLE);
+                mResultContainer.setVisibility(View.GONE);
+                mPasswordView.setText(null);
+                mPinView.setText(null);
+                finishLayout();
+                break;
+            }
+            case R.id.close: {
+                finish();
                 break;
             }
         }

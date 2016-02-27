@@ -25,6 +25,10 @@ android {
         versionName "0.9"
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     sourceSets {
         main {
             res.srcDirs += project.files("src/$name/res-localized")

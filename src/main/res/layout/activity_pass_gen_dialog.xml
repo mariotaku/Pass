@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minWidth="200dp"
     android:padding="@dimen/element_spacing_large"
     tools:context=".activity.PassGenDialogActivity">
 
@@ -11,9 +12,11 @@
         android:id="@+id/input_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:orientation="vertical"
         android:visibility="visible"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <Spinner
             android:id="@+id/domain_selector"
@@ -49,7 +52,8 @@
             android:paddingEnd="@dimen/element_spacing_xlarge"
             android:paddingStart="@dimen/element_spacing_xlarge"
             android:paddingTop="@dimen/element_spacing_normal"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -93,12 +97,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <LinearLayout
             android:id="@+id/button_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/generated_passwords_container"
             android:orientation="horizontal">
 
             <ImageButton
@@ -141,12 +146,15 @@
             android:id="@+id/generated_passwords_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button_bar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
             android:columnCount="2"
             android:rowCount="2">
 
             <TextView
-                android:id="@+id/generated_password"
+                android:id="@+id/generated_password_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -162,7 +170,7 @@
                 tools:text="Password123456"/>
 
             <TextView
-                android:id="@+id/generated_pin"
+                android:id="@+id/generated_pin_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -212,5 +220,6 @@
                 android:tint="?android:colorForeground"/>
         </GridLayout>
 
+
     </RelativeLayout>
-</FrameLayout>
+</RelativeLayout>

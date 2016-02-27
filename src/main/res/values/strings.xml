@@ -57,4 +57,5 @@
     <string name="past_manually_hint">Automatic filling is not supported in this screen, paste password instead.</string>
     <string name="auto_fill_passwords">Auto fill passwords</string>
     <string name="tag_name_prefix">Tag <xliff:g id="name">%s</xliff:g></string>
+    <string name="info">Info</string>
 </resources>

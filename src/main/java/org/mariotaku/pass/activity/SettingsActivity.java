@@ -1,5 +1,6 @@
 package org.mariotaku.pass.activity;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import org.mariotaku.pass.fragment.SettingsDetailsFragment;
  * Created by mariotaku on 15/10/31.
  */
 public class SettingsActivity extends PreferenceActivity implements Constants {
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         final Intent intent = getIntent();
@@ -23,6 +25,11 @@ public class SettingsActivity extends PreferenceActivity implements Constants {
             intent.putExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS, fragmentArgs);
         }
         super.onCreate(savedInstanceState);
+
+        final ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -32,5 +39,11 @@ public class SettingsActivity extends PreferenceActivity implements Constants {
         } catch (ClassNotFoundException e) {
             return false;
         }
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 }

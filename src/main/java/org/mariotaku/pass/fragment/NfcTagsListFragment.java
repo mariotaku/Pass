@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
@@ -73,6 +75,7 @@ public class NfcTagsListFragment extends ListFragment implements Constants, Load
     @Override
     public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
         setListAdapter(new SimpleCursorAdapter(getActivity(),
                 android.R.layout.simple_list_item_activated_2, null,
                 new String[]{NfcTags.NAME, NfcTags.DOMAIN},
@@ -120,6 +123,11 @@ public class NfcTagsListFragment extends ListFragment implements Constants, Load
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT), null, null);
         }
         super.onResume();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_tags_list, menu);
     }
 
     public static class AddCardDialogFragment extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnShowListener, TextWatcher {
