@@ -1,11 +1,13 @@
 package org.mariotaku.pass.view.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.eftimoff.patternview.PatternView;
@@ -22,7 +24,7 @@ import java.util.List;
 /**
  * Created by mariotaku on 15/10/30.
  */
-public class PatternPasswordController extends PasswordContainer.PasswordController implements Constants, PatternView.OnPatternDetectedListener {
+public class PatternPasswordController extends PasswordContainer.PasswordController implements Constants, PatternView.OnPatternDetectedListener, PatternView.OnPatternStartListener {
     private final MasterPasswordEncrypter mEncrypter;
     private PatternView mPatternView;
 
@@ -36,6 +38,7 @@ public class PatternPasswordController extends PasswordContainer.PasswordControl
         super.onAttach(view);
         mPatternView = (PatternView) view.findViewById(R.id.password_pattern);
         mPatternView.setOnPatternDetectedListener(this);
+        mPatternView.setOnPatternStartListener(this);
     }
 
     @Override
@@ -91,4 +94,12 @@ public class PatternPasswordController extends PasswordContainer.PasswordControl
         return bb.array();
     }
 
+    @Override
+    public void onPatternStart() {
+        final Activity activity = (Activity) getContext();
+        final View currentFocus = activity.getCurrentFocus();
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (currentFocus == null || !imm.isActive(currentFocus)) return;
+        imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+    }
 }
