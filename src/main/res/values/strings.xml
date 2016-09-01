@@ -60,4 +60,5 @@
     <string name="info">Info</string>
     <string name="password_confirm">Password confirm</string>
     <string name="password_not_match">Password not match</string>
+    <string name="include_special_characters">Include special characters</string>
 </resources>

@@ -18,6 +18,7 @@ public interface Constants {
     String KEY_PASSWORD_GENERATOR_TYPE = "password_generator_type";
     String KEY_PASSWORD_RETRY_COUNT = "password_retry_count";
     String KEY_CLEAR_COPIED_PASSWORD_AUTOMATICALLY = "clear_copied_password_automatically";
+    String KEY_PASSWORD_INCLUDE_SPECIAL_CHARACTERS = "password_include_special_characters";
 
     String KEY_COPIED_PASSWORD_VALIDITY = "copied_password_validity";
     String ACTION_TAG_DISCOVERED = BuildConfig.APPLICATION_ID + ".TAG_DISCOVERED";

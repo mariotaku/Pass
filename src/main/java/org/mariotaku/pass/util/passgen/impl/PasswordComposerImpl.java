@@ -13,8 +13,10 @@ import java.security.NoSuchAlgorithmException;
 public class PasswordComposerImpl extends PassGen {
 
     private final MessageDigest md5;
+    private final boolean specialChar;
 
-    public PasswordComposerImpl() {
+    public PasswordComposerImpl(boolean specialChar) {
+        this.specialChar = specialChar;
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
@@ -28,7 +30,11 @@ public class PasswordComposerImpl extends PassGen {
             throw new IllegalArgumentException("Password length must between 1 and 31 inclusive.");
         }
         //noinspection RedundantStringConstructorCall
-        return toHexString(md5.digest(new String(pass + ":" + domain).getBytes())).substring(0, length);
+        final String md5str = toHexString(md5.digest(new String(pass + ":" + domain).getBytes()));
+        if (specialChar) {
+            return md5str.substring(0, length - 1) + ".";
+        }
+        return md5str.substring(0, length);
     }
 
     private String toHexString(final byte[] bytes) {

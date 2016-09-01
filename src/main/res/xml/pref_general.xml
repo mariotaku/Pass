@@ -34,6 +34,10 @@
             android:entryValues="@array/values_password_generator_type"
             android:key="password_generator_type"
             android:title="@string/password_generator_type"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="password_include_special_characters"
+            android:title="@string/include_special_characters"/>
         <org.mariotaku.pass.preference.NumberPickerPreference
             android:defaultValue="10"
             android:key="password_length"

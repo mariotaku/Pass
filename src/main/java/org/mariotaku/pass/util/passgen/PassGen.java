@@ -23,14 +23,14 @@ public abstract class PassGen {
         return generateChecked(pass, domain, length);
     }
 
-    public static PassGen getInstance(String provider) {
+    public static PassGen getInstance(String provider, boolean specialChar) {
         switch (provider) {
             case "sgp_md5":
-                return new SuperGenPassImpl("MD5");
+                return new SuperGenPassImpl("MD5", specialChar);
             case "sgp_sha512":
-                return new SuperGenPassImpl("SHA512");
+                return new SuperGenPassImpl("SHA512", specialChar);
             case "pw_composer":
-                return new PasswordComposerImpl();
+                return new PasswordComposerImpl(specialChar);
             case "hotp_pin":
                 return new HotpPinImpl();
         }

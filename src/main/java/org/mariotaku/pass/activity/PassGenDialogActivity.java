@@ -117,8 +117,9 @@ public class PassGenDialogActivity extends Activity implements Constants, View.O
 
         mHandler = new Handler(Looper.getMainLooper());
         mPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-        mPassGen = PassGen.getInstance(mPreferences.getString(KEY_PASSWORD_GENERATOR_TYPE, "sgp_md5"));
-        mPinGen = PassGen.getInstance("hotp_pin");
+        final boolean specialChar = mPreferences.getBoolean(KEY_PASSWORD_INCLUDE_SPECIAL_CHARACTERS, false);
+        mPassGen = PassGen.getInstance(mPreferences.getString(KEY_PASSWORD_GENERATOR_TYPE, "sgp_md5"), specialChar);
+        mPinGen = PassGen.getInstance("hotp_pin", specialChar);
         mFingerprintHelper = FingerprintHelper.getInstance(this);
         setContentView(R.layout.activity_pass_gen_dialog);
         if (customTitleSupported) {
