@@ -20,6 +20,7 @@ public class QuickSettingsTileService extends TileService {
                 Intent intent = new Intent(QuickSettingsTileService.this, PassGenDialogActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
             }
         });
     }
